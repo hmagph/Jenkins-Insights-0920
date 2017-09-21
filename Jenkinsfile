@@ -10,11 +10,11 @@ pipeline {
     agent any
     environment {
         // You need to specify 4 required environment variables first, they are going to be used for the following IBM Cloud DevOps steps
-        IBM_CLOUD_DEVOPS_CREDS = credentials('BLUEMIX_CREDENTIAL_ID_PLACEHOLDER')
-        IBM_CLOUD_DEVOPS_ORG = 'ORG_NAME_PLACEHOLDER'
-        IBM_CLOUD_DEVOPS_APP_NAME = 'APP_NAME_PLACEHOLDER'
-        IBM_CLOUD_DEVOPS_TOOLCHAIN_ID = 'TOOLCHAIN_ID_PLACEHOLDER'
-        GIT_REPO = 'GIT_REPO_PLACEHOLDER'
+        IBM_CLOUD_DEVOPS_CREDS = credentials('vijay_password')
+        IBM_CLOUD_DEVOPS_ORG = 'philippe_mulet@fr.ibm.com'
+        IBM_CLOUD_DEVOPS_APP_NAME = 'Weather App'
+        IBM_CLOUD_DEVOPS_TOOLCHAIN_ID = '5a86b264-16f2-4cb4-9401-552b6a2f1294'
+        GIT_REPO = 'https://github.com/hmagph/Jenkins-Insights-0920'
     }
     tools {
         nodejs 'recent' // your nodeJS installation name in Jenkins
@@ -74,7 +74,7 @@ pipeline {
         stage('Gate') {
             steps {
                 // use "evaluateGate" method to leverage IBM Cloud DevOps gate
-                evaluateGate policy: 'POLICY_NAME_PLACEHOLDER', forceDecision: 'true'
+                evaluateGate policy: 'Weather App Policy', forceDecision: 'true'
             }
         }
         stage('Deploy to Prod') {
